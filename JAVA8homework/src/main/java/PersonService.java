@@ -16,10 +16,8 @@ public class PersonService {
     }
 
     public Stream<Person> getPersonByMasterNumbers(List<MasterNumber> numbers) {
-        //TODO: Add the code to return people by numbers
-        // Use groupToPeople() method
         List<String> n = numbers.stream().map(MasterNumber::getNumber).collect(Collectors.toList());
-        if (this.people.get(n) != null) {
+        if (this.people.get(n).isPresent()) {
             return this.people.get(n).orElseThrow(NoSuchElementException::new).groupToPeople();
         } else {
             return Stream.empty();

@@ -29,16 +29,14 @@ public class PersonSet {
 
     public Stream<Person> groupToPeople() {
         // TODO: group the data to Stream<Person>
-        // Can use Collectors.groupingBy method
-        // Can add helper method
         Map<String, List<MasterNumber>> groupToMasterNumber = this.masterNumbers.stream()
                 .collect(Collectors.groupingBy(MasterNumber::getNumber));
         Map<String, List<Address>> groupToAddress = this.addresses.stream()
                 .collect(Collectors.groupingBy(Address::getMasterNumber));
         Map<String, List<Email>> groupToEmail = this.emails.stream()
-                .collect(Collectors.groupingBy(email -> email.getMasterNumber()));
+                .collect(Collectors.groupingBy(Email::getMasterNumber));
         Map<String, List<Telephone>> groupToTelephone = this.telephones.stream()
-                .collect(Collectors.groupingBy(telephone -> telephone.getMasterNumber()));
+                .collect(Collectors.groupingBy(Telephone::getMasterNumber));
 
         Set<Person> personSet = new HashSet<>();
         for (Map.Entry<String, List<MasterNumber>> entry : groupToMasterNumber.entrySet()) {
