@@ -70,7 +70,7 @@ class PersonSetTest {
     personSet.setEmails(emails);
 
     List<Person> people = personSet.groupToPeople().collect(Collectors.toList());
-
+    System.out.println(people);
     assertTrue(people.stream().allMatch(person -> person.getEmails().isEmpty()));
   }
 
