@@ -28,7 +28,6 @@ public class PersonSet {
     }
 
     public Stream<Person> groupToPeople() {
-        // TODO: group the data to Stream<Person>
         Map<String, List<MasterNumber>> groupToMasterNumber = this.masterNumbers.stream()
                 .collect(Collectors.groupingBy(MasterNumber::getNumber));
         Map<String, List<Address>> groupToAddress = this.addresses.stream()

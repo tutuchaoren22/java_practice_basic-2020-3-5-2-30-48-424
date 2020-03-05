@@ -28,7 +28,7 @@ public class Person {
         if (this.address == null) {
             return Optional.empty();
         } else {
-            return Optional.of(new SimpleAddress(this.address.getStreet(), this.address.getCity()));//.orElseGet(()->new SimpleAddress());
+            return Optional.of(new SimpleAddress(this.address.getStreet(), this.address.getCity()));
         }
     }
 
