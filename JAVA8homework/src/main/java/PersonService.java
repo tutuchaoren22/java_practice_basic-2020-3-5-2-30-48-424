@@ -17,11 +17,13 @@ public class PersonService {
 
     public Stream<Person> getPersonByMasterNumbers(List<MasterNumber> numbers) {
         List<String> n = numbers.stream().map(MasterNumber::getNumber).collect(Collectors.toList());
-        if (this.people.get(n).isPresent()) {
-            return this.people.get(n).orElseThrow(NoSuchElementException::new).groupToPeople();
-        } else {
-            return Stream.empty();
+        try {
+            if (this.people.get(n).isPresent()) {
+                return this.people.get(n).orElseThrow(NoSuchElementException::new).groupToPeople();
+            }
+        } catch (NullPointerException e) {
         }
+        return Stream.empty();
     }
 
 }
